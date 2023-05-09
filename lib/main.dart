@@ -70,11 +70,11 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                   onTap: () async {
-                    const url = 'tel:+573008617951';
-                    if (await canLaunch(url)) {
-                      await launch(url);
+                    final Uri url = Uri(scheme: 'tel', path: '+573008617951');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
                     } else {
-                      throw 'No se pudo llamar a $url';
+                      throw 'No se pudo realizar la llamada';
                     }
                   },
                 ),
@@ -96,11 +96,14 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                   onTap: () async {
-                    const url = 'mailto:kevsalcedom@gmail.com';
-                    if (await canLaunch(url)) {
-                      await launch(url);
+                    final Uri url = Uri(
+                      scheme: 'mailto',
+                      path: 'kevsalcedom@gmail.com',
+                    );
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
                     } else {
-                      throw 'No se pudo crear el correo';
+                      throw 'No se pudo enviar correo';
                     }
                   },
                 ),
